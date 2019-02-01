@@ -17,6 +17,7 @@ RUN git clone -b "$keystone_version" https://github.com/openstack/requirements
 
 RUN useradd --user-group keystone \
     && pip install -e /keystone -c /requirements/upper-constraints.txt
+    && pip install -e /keystone mechanicalsoup
 
 RUN pip install pbr PyMySQL python-memcached python-openstackclient python-ldap ldappool -c /requirements/upper-constraints.txt \
     && mkdir -p /etc/keystone/credential-keys /var/www/cgi-bin/keystone /var/log/apache2 /home/keystone \
